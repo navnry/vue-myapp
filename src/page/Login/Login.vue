@@ -38,7 +38,7 @@
         isBtn: "登录",
         isLoading: false,
         username: "admin",
-        password: "123456",
+        password: "admin123",
         requireAuth: store.state.requireAuth
       }
     },
@@ -84,7 +84,7 @@
               clearInterval(timer);
               _this.isBtn = "登录"
               _this.isLoading = false
-              console.log(response);
+              // console.log(response);
               if (response.data.code != 0) {
                 _this.$message({
                   message: response.data.message,
@@ -104,9 +104,9 @@
                 localStorage.setItem("Flag", "isLogin");
                 localStorage.setItem("Username", _this.username);
                 _this.$store.dispatch("updateInfo", {flag: true, Username: true});
-                // _this.$store.dispatch("updateInfo", JSON.stringify({requireAuth: true, userInfo: "getsName"}));
-                // console.log(_this.$store.state);
-                _this.$router.push('/')
+                setTimeout(()=>{
+                  _this.$router.push('/')
+                },1000)
                 // _this.$router.push({
                 //   name: `Mine`,
                 //   params: {

@@ -46,7 +46,7 @@ router.beforeEach((to, from, next) => {
       next({
         path: '/login',
       })
-      console.log('请先登录')
+      console.log('请先进行登录')
     } else {
       next()
     }

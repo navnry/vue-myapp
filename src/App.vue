@@ -1,28 +1,47 @@
 <template>
   <div id="app">
-    <router-view @onLine="isOnline"></router-view>
+    <!--{{pageTitle}}-->
+    <Header :title="title"></Header>
+    <transition :name="names" mode="">
+      <router-view class="childPage"></router-view>
+    </transition>
     <TabBar></TabBar>
   </div>
 </template>
 
 <script>
+  import Header from "@/components/Header"
   import TabBar from "@/components/TabBar"
 
   export default {
     name: 'App',
     components: {
-      TabBar
+      TabBar,
+      Header
     },
     data() {
-      return {}
+      return {
+        names: '',
+        title: '1'
+      }
+    },
+    mounted() {
+      
     },
     created() {
-      this.isOnline
+      // console.log(this.$route.meta);
     },
-    methods: {
-      isOnline() {
-        console.log("q");
+    methods: {},
+    watch: {
+      $route(to, from) {
+        this.title = to.meta.title
+        if (to.meta.index > from.meta.index) {
+          this.names = 'left'
+        } else {
+          this.names = 'right'
+        }
       }
+
     }
   }
 </script>
@@ -31,5 +50,7 @@
   #app {
     width: 100%;
     height: 100%;
+    position: relative;
+    /*padding: .92rem 0 1rem 0;*/
   }
 </style>

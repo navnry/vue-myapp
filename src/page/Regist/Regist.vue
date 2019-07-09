@@ -28,7 +28,7 @@
         </el-form-item>
         <div class="tips">
           <a href="javascript:;">我有账号，</a>
-          <router-link to="/login">立即登录</router-link>
+          <router-link to="/login" style="color: #f9f9f9">立即登录</router-link>
         </div>
         <div class="copyright">
           <el-divider content-position="center">Ochat</el-divider>
@@ -50,9 +50,10 @@
       // <!--验证用户名是否合法-->
       let validateUsername = (rule, value, callback) => {
         if (value === "") {
-          callback(new Error("6-18位字母、数字或“_”,字母开头"))
-        } else if (value === "") {
-          callback(new Error("6-18位字母、数字或“_”,字母开头"))
+          callback(new Error("用户名不能为空"))
+        } else if (!/^[a-zA-Z][0-9a-zA-Z]{4,11}$/.test(value)) {
+          callback(new Error("5-12位字母、数字,字母开头,不能使用中文"))
+          return false
         } else {
           callback()
         }
@@ -60,7 +61,9 @@
       //密码验证
       let validatePass = (rule, value, callback) => {
         if (value === "") {
-          callback(new Error("请输入密码"))
+          callback(new Error("密码不能为空"))
+        } else if (!/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z_]{8,16}$/.test(value)) {
+          callback(new Error("8-16位，同时包含字母和数字，字母开头"))
         } else {
           callback()
         }
@@ -70,7 +73,7 @@
         if (value === "") {
           callback(new Error("请再次输入密码"));
         } else if (value !== this.ruleForm.pass) {
-          callback(new Error("两次输入密码不一致!"));
+          callback(new Error("两次输入密码不一致"));
         } else {
           callback();
         }
@@ -96,7 +99,7 @@
         let _this = this
         this.$refs[formName].validate(valid => {
           if (!valid) {
-            console.log("error submit!!");
+            // console.log("提交失败");
             return false;
           } else {
             this.isBtn = "注册中"
@@ -110,6 +113,7 @@
                   password: this.ruleForm.pass,
                   repassword: this.ruleForm.checkPass
                 }).then(response => {
+                  console.log(response);
                   clearInterval(timer);
                   console.log(this.ruleForm.username);
                   if (response.data.code != 0) {
@@ -130,7 +134,8 @@
                       message: '现在去登录吗'
                     }).then(() => {
                       _this.$router.push('/login')
-                    }).catch(() => {
+                    }).catch((err) => {
+                      console.warn(err)
                     });
                   }
                 }, response => {
@@ -183,8 +188,6 @@
         font-size: .26rem;
         color: #ffffff;
         font-family: "黑体", sans-serif;
-        padding: 0 .3rem;
-
       }
     }
 

@@ -18,12 +18,15 @@
     data() {
       return {
         tabbarArr: [
-          {id: 1, path: "/tidings", icon: "chat-o", name: "消息"},
-          {id: 2, path: "/friends", icon: "friends-o", name: "朋友"},
-          {id: 3, path: "/find", icon: "share", name: "发现"},
-          {id: 4, path: "/mine", icon: "manager-o", name: "我的"}
+          {id: 1, path: "/tidings", icon: "chat", name: "消息"},
+          {id: 2, path: "/friends", icon: "friends", name: "朋友"},
+          {id: 3, path: "/find", icon: "eye", name: "发现"},
+          {id: 4, path: "/mine", icon: "manager", name: "我的"}
         ]
       }
+    },
+    created(){
+
     }
   }
 </script>
@@ -43,7 +46,7 @@
       display: block;
       width: 25%;
       text-align: center;
-      color: #666;
+      color: #999;
 
       i {
         display: block;

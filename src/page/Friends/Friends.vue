@@ -1,30 +1,75 @@
 <template>
-  <div class="order">
-    <van-card
-      num="2"
-      price="2.00"
-      desc="描述信息"
-      title="商品标题"
-      thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-    >
-      <div slot="tags">
-        <van-tag plain type="danger">标签</van-tag>
-        <van-tag plain type="danger">标签</van-tag>
+  <div class="friendS">
+    <div class="menu-wrap main">
+      <div class="menu-item">
+        <i class="el-icon-user"></i>
+        <span>新的朋友</span>
       </div>
-      <div slot="footer">
-        <van-button size="mini">按钮</van-button>
-        <van-button size="mini">按钮</van-button>
+    </div>
+    <div class="menu-wrap main">
+      <div class="menu-item">
+        <i class="el-icon-s-comment"></i>
+        <span>群聊</span>
       </div>
-    </van-card>
+      <div class="menu-item">
+        <i class="el-icon-more"></i>
+        <span>标签</span>
+      </div>
+      <div class="menu-item">
+        <i class="el-icon-search"></i>
+        <span>搜索</span>
+      </div>
+    </div>
+    <van-index-bar>
+      <van-index-anchor index="A"/>
+      <van-cell title="文本"/>
+      <van-cell title="文本"/>
+      <van-cell title="文本"/>
+      <van-index-anchor index="B"/>
+      <van-cell title="文本"/>
+      <van-cell title="文本"/>
+      <van-cell title="文本"/>
+    </van-index-bar>
   </div>
 </template>
 
 <script>
   export default {
-    name: "Order"
+    name: "Friends"
   }
 </script>
 
-<style scoped>
+<style scoped lang="less">
+  .menu-wrap {
+    background: #ffffff;
+    margin-bottom: .2rem;
+    .menu-item {
 
+      /*padding: .2rem 0;*/
+      font-size: .3rem;
+      display: flex;
+
+      i {
+        line-height: 1rem;
+        width: .5rem;
+        text-align: center;
+        font-size: .34rem;
+        color: #666;
+      }
+
+      span {
+        display: block;
+        flex: 1;
+        line-height: 1rem;
+        border-bottom: 1px solid #eeeeee;
+        padding-left: .1rem;
+      }
+    }
+
+    .menu-item:last-child {
+      span {
+        border: none;
+      }
+    }
+  }
 </style>
