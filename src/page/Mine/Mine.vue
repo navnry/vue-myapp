@@ -20,12 +20,12 @@
     </div>
     <div class="menu-wrap main">
       <div class="menu-item">
-        <i class="el-icon-warning-outline"></i>
-        <span>关于</span>
-      </div>
-      <div class="menu-item">
         <i class="el-icon-setting"></i>
         <span>设置</span>
+      </div>
+      <div class="menu-item">
+        <i class="el-icon-warning-outline"></i>
+        <span>关于</span>
       </div>
       <div class="menu-item" @click="exitLogin">
         <i class="el-icon-switch-button"></i>
@@ -59,7 +59,8 @@
       this.usernames = localStorage.Username
     },
     watch: {
-      $route(to, from) { //导航发生变化，$route也就是会改变
+      $route(to, from) {
+        this.title = to.meta.title
         if (to.meta.index > from.meta.index) {
           this.names = 'left'
         } else {

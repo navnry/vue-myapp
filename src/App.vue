@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <!--{{pageTitle}}-->
     <Header :title="title"></Header>
     <transition :name="names" mode="">
       <router-view class="childPage"></router-view>
@@ -22,7 +21,7 @@
     data() {
       return {
         names: '',
-        title: '1'
+        title: ''
       }
     },
     mounted() {
@@ -41,7 +40,6 @@
           this.names = 'right'
         }
       }
-
     }
   }
 </script>

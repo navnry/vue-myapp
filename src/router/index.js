@@ -89,13 +89,15 @@ export default new Router({
         meta: {
           requireAuth: true,
           index: 7,
-          title:"个人信息"
+          title:"个人信息",
+          showTitle:false,
         },
       }],
       meta: {
         requireAuth: true,
         index: 6,
-        title:"我的"
+        // title:"我的",
+        showTitle:false,
       },
       beforeEnter(to, from, next) {
         document.getElementById('pageTitle').innerHTML = "我的"

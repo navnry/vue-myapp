@@ -202,6 +202,17 @@ a:link, a:active, a:visited, a:hover {
   color: #fff;
 }
 
+.van-nav-bar__text {
+  color: #333333;
+  font-size: .32rem;
+}
+
+.van-nav-bar .van-icon {
+  color: #333333;
+  font-size: .34rem;
+  padding: 0 .1rem;
+}
+
 
 /*过渡动画*/
 .fade-enter-active, .fade-leave-active {
